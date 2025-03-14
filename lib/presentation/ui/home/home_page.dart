@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:read_me_app/presentation/widgets/bottom_tab_bar/bottom_tab_bar.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget{
       body: Center(
 
       ),
+      bottomNavigationBar: BottomTabBar(),
     );
   }
 }
