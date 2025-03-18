@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "73028329956",
+    "project_id": "readmeapp-e8e61",
+    "storage_bucket": "readmeapp-e8e61.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73028329956:android:ff376c7ec2ebde5ec7e7f1",
+        "android_client_info": {
+          "package_name": "com.example.read_me_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYD-ylkPnJYVQyq88zJGx1IY3iDr_zyg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
