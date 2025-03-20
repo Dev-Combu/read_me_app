@@ -13,9 +13,8 @@ class HomePage extends StatelessWidget{
         backgroundColor: Colors.blueGrey,
       ),
       body: Center(
-
+        child: Text('home'),
       ),
-      bottomNavigationBar: BottomTabBar(),
     );
   }
 }
