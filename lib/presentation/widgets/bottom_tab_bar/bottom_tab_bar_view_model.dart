@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BottomTabBarViewModel extends StateNotifier<int> {
-  BottomTabBarViewModel(super.state);
+  BottomTabBarViewModel() : super(1);
   
   void updatePage(int index) {
     state = index;
@@ -14,5 +14,5 @@ class BottomTabBarViewModel extends StateNotifier<int> {
 
 final bottomNavigationProvider =
     StateNotifierProvider<BottomTabBarViewModel, int>(
-  (ref) => BottomTabBarViewModel(1),
+  (ref) => BottomTabBarViewModel(),
 );
