@@ -1,4 +1,4 @@
-import 'package:read_me_app/data/dto/naver_dto.dart';
+import 'package:read_me_app/data/dto/naver/naver_dto.dart';
 import 'package:read_me_app/data/source/naver_data_source.dart';
 import 'package:dio/dio.dart';
 
