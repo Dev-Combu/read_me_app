@@ -6,6 +6,7 @@ import 'package:read_me_app/presentation/widgets/bottom_tab_bar/bottom_tab_bar_v
 // 상수 선언으로 가독성 향상
 const int homePage = 0;
 const int bookcasePage = 1;
+const int booksearchPage = 2;
 
 class BottomTabBar extends ConsumerStatefulWidget {
   const BottomTabBar({super.key});
@@ -19,7 +20,7 @@ class _BottomTabBarState extends ConsumerState<BottomTabBar> {
   void _handleNavigation(BuildContext context, WidgetRef ref, int value) {
     final currentPage = ref.watch(bottomNavigationProvider);
 
-    final routes = ['/', '/bookcase'];
+    final routes = ['/', '/bookcase','/booksearch'];
     if (currentPage != value) {
       context.go(routes[value]);
       ref.read(bottomNavigationProvider.notifier).updatePage(value);
@@ -50,6 +51,8 @@ class _BottomTabBarState extends ConsumerState<BottomTabBar> {
                 icon: Icons.home, label: '홈', isSelected: currentPage == homePage),
             _buildNavItem(
                 icon: Icons.book, label: 'BookCase', isSelected: currentPage == bookcasePage),
+            _buildNavItem(
+                icon: Icons.search, label: 'BookSearch', isSelected: currentPage == booksearchPage),
           ],
         );
       },

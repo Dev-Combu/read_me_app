@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_app/presentation/ui/bookcase/bookcase_page.dart';
+import 'package:read_me_app/presentation/ui/booksearch/booksearch_page.dart';
 import 'package:read_me_app/presentation/ui/home/home_page.dart';
 import 'package:read_me_app/presentation/widgets/bottom_tab_bar/bottom_tab_bar.dart';
 
@@ -20,14 +21,18 @@ final router = GoRouter(
       },
       routes: [
         GoRoute(
-        path: '/',
+          path: '/',
           builder: (context, state) => HomePage(),
         ),
-        GoRoute(path: '/bookcase',
-        builder: (context, state) => BookcasePage(),
+        GoRoute(
+          path: '/bookcase',
+          builder: (context, state) => BookcasePage(),
+        ),
+        GoRoute(
+          path: '/booksearch',
+          builder: (context, state) => BooksearchPage(),
         ),
       ],
-      
     ),
   ],
 );
