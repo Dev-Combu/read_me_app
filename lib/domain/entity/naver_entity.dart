@@ -1,6 +1,7 @@
 class NaverEntity {
   final String title;
   final String link;
+  final String image;
   final String author;
   final String discount;
   final String publisher;
@@ -11,6 +12,7 @@ class NaverEntity {
   NaverEntity({
     required this.title,
     required this.link,
+    required this.image,
     required this.author,
     required this.discount,
     required this.publisher,

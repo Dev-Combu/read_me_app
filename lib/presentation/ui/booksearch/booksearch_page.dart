@@ -72,7 +72,33 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
                   width: 200,
                   child: Row(
                     children: [
-                      Text(result.title),
+                      ClipRRect(
+                        child: Image.network(
+                          result.image,
+                          width: 56,
+                          height: 56,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 300,
+                            child: Text(
+                              result.title,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Text(
+                            result.author,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            result.pubdate,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 );

@@ -9,6 +9,7 @@ part of 'naver_dto.dart';
 _NaverDto _$NaverDtoFromJson(Map<String, dynamic> json) => _NaverDto(
       title: json['title'] as String,
       link: json['link'] as String,
+      image: json['image'] as String,
       author: json['author'] as String,
       discount: json['discount'] as String,
       publisher: json['publisher'] as String,
@@ -20,6 +21,7 @@ _NaverDto _$NaverDtoFromJson(Map<String, dynamic> json) => _NaverDto(
 Map<String, dynamic> _$NaverDtoToJson(_NaverDto instance) => <String, dynamic>{
       'title': instance.title,
       'link': instance.link,
+      'image': instance.image,
       'author': instance.author,
       'discount': instance.discount,
       'publisher': instance.publisher,

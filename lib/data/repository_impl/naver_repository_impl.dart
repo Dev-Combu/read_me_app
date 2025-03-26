@@ -15,6 +15,7 @@ class NaverRepositoryImpl implements NaverRepository{
         (e) => NaverEntity(
             title: e.title,
             link: e.link,
+            image: e.image,
             author: e.author,
             discount: e.discount,
             publisher: e.publisher,

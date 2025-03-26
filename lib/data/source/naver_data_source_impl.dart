@@ -12,7 +12,7 @@ class NaverDataSourceImpl implements NaverDataSource{
       'https://openapi.naver.com/v1/search/book.json?',
       queryParameters: {
         'query' : query,
-        'display' : 1,
+        'display' : 10,
       },
       options: Options(
         headers: {
