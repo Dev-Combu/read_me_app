@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:read_me_app/data/dto/naver/naver_dto.dart';
 import 'package:read_me_app/data/source/naver_data_source.dart';
 import 'package:dio/dio.dart';
@@ -17,8 +18,8 @@ class NaverDataSourceImpl implements NaverDataSource{
       },
       options: Options(
         headers: {
-          'X-Naver-Client-Id' : 'dYb9dZgQPTH2jtH3aWyj',
-          'X-Naver-Client-Secret' : '4A1qcMgNzJ'
+          'X-Naver-Client-Id' : dotenv.get('NAVER_ID'),
+          'X-Naver-Client-Secret' : dotenv.get('NAVER_SECRET')
         }
       )
     );

@@ -8,7 +8,7 @@ import 'package:read_me_app/presentation/widgets/bottom_tab_bar/bottom_tab_bar.d
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/bookcase',
   navigatorKey: _rootNavigatorKey,
   routes: [
     ShellRoute(
