@@ -8,8 +8,8 @@ class NaverRepositoryImpl implements NaverRepository{
 
 
   @override
-  Future<List<NaverEntity>?> searchBook(String query) async{
-    final result = await _naverDataSource.searchBook(query);
+  Future<List<NaverEntity>?> searchBook(String query, int start) async{
+    final result = await _naverDataSource.searchBook(query, start);
     return result
       .map(
         (e) => NaverEntity(

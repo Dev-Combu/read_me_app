@@ -7,12 +7,13 @@ class NaverDataSourceImpl implements NaverDataSource{
   final dio = Dio();
 
   @override
-  Future<List<NaverDto>> searchBook(String query) async{
+  Future<List<NaverDto>> searchBook(String query, int start) async{
     final response = await dio.get(
       'https://openapi.naver.com/v1/search/book.json?',
       queryParameters: {
         'query' : query,
         'display' : 10,
+        'start' : start
       },
       options: Options(
         headers: {
