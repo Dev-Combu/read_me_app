@@ -17,6 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$NaverDto {
   String get title;
   String get link;
+  String get image;
   String get author;
   String get discount;
   String get publisher;
@@ -41,6 +42,7 @@ mixin _$NaverDto {
             other is NaverDto &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.link, link) || other.link == link) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
@@ -54,12 +56,12 @@ mixin _$NaverDto {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, link, author, discount,
-      publisher, pubdate, isbn, description);
+  int get hashCode => Object.hash(runtimeType, title, link, image, author,
+      discount, publisher, pubdate, isbn, description);
 
   @override
   String toString() {
-    return 'NaverDto(title: $title, link: $link, author: $author, discount: $discount, publisher: $publisher, pubdate: $pubdate, isbn: $isbn, description: $description)';
+    return 'NaverDto(title: $title, link: $link, image: $image, author: $author, discount: $discount, publisher: $publisher, pubdate: $pubdate, isbn: $isbn, description: $description)';
   }
 }
 
@@ -71,6 +73,7 @@ abstract mixin class $NaverDtoCopyWith<$Res> {
   $Res call(
       {String title,
       String link,
+      String image,
       String author,
       String discount,
       String publisher,
@@ -93,6 +96,7 @@ class _$NaverDtoCopyWithImpl<$Res> implements $NaverDtoCopyWith<$Res> {
   $Res call({
     Object? title = null,
     Object? link = null,
+    Object? image = null,
     Object? author = null,
     Object? discount = null,
     Object? publisher = null,
@@ -108,6 +112,10 @@ class _$NaverDtoCopyWithImpl<$Res> implements $NaverDtoCopyWith<$Res> {
       link: null == link
           ? _self.link
           : link // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       author: null == author
           ? _self.author
@@ -143,6 +151,7 @@ class _NaverDto implements NaverDto {
   _NaverDto(
       {required this.title,
       required this.link,
+      required this.image,
       required this.author,
       required this.discount,
       required this.publisher,
@@ -156,6 +165,8 @@ class _NaverDto implements NaverDto {
   final String title;
   @override
   final String link;
+  @override
+  final String image;
   @override
   final String author;
   @override
@@ -191,6 +202,7 @@ class _NaverDto implements NaverDto {
             other is _NaverDto &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.link, link) || other.link == link) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
@@ -204,12 +216,12 @@ class _NaverDto implements NaverDto {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, link, author, discount,
-      publisher, pubdate, isbn, description);
+  int get hashCode => Object.hash(runtimeType, title, link, image, author,
+      discount, publisher, pubdate, isbn, description);
 
   @override
   String toString() {
-    return 'NaverDto(title: $title, link: $link, author: $author, discount: $discount, publisher: $publisher, pubdate: $pubdate, isbn: $isbn, description: $description)';
+    return 'NaverDto(title: $title, link: $link, image: $image, author: $author, discount: $discount, publisher: $publisher, pubdate: $pubdate, isbn: $isbn, description: $description)';
   }
 }
 
@@ -223,6 +235,7 @@ abstract mixin class _$NaverDtoCopyWith<$Res>
   $Res call(
       {String title,
       String link,
+      String image,
       String author,
       String discount,
       String publisher,
@@ -245,6 +258,7 @@ class __$NaverDtoCopyWithImpl<$Res> implements _$NaverDtoCopyWith<$Res> {
   $Res call({
     Object? title = null,
     Object? link = null,
+    Object? image = null,
     Object? author = null,
     Object? discount = null,
     Object? publisher = null,
@@ -260,6 +274,10 @@ class __$NaverDtoCopyWithImpl<$Res> implements _$NaverDtoCopyWith<$Res> {
       link: null == link
           ? _self.link
           : link // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       author: null == author
           ? _self.author

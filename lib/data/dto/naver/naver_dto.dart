@@ -8,6 +8,7 @@ abstract class NaverDto with _$NaverDto {
   factory NaverDto({
     required String title,
     required String link,
+    required String image,
     required String author,
     required String discount,
     required String publisher,
