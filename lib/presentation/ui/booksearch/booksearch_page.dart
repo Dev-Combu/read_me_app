@@ -35,6 +35,7 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
+      
       child: Scaffold(
         appBar: AppBar(
           title: TextField(

@@ -6,7 +6,7 @@ void main() {
   
   test('naver api test', () async {
     NaverDataSourceImpl naverDataSourceImpl = NaverDataSourceImpl();
-    final search = await naverDataSourceImpl.searchBook('신의 카르테');
+    final search = await naverDataSourceImpl.searchBook('신의 카르테',0);
     expect(search.isEmpty, false);
     final Logger logger = Logger();
     for(var searchs in search){
