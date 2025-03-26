@@ -5,7 +5,7 @@ class NaverUsecase {
   NaverUsecase(this._naverRepository);
   final NaverRepository _naverRepository;
 
-   Future<List<NaverEntity>?> execute(String query) async{
-    return await _naverRepository.searchBook(query);
+   Future<List<NaverEntity>?> execute(String query, int start) async{
+    return await _naverRepository.searchBook(query, start);
   }
 }
