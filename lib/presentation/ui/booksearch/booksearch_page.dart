@@ -41,7 +41,7 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
           title: TextField(
             maxLines: 1,
             controller: textEditingController,
-            onSubmitted: (text) => bookSearch(text, 1, append: false), // 🔄 새 검색 (초기화)
+            onSubmitted: (text) => bookSearch(text, 1, append: false),
             decoration: InputDecoration(
               hintText: '검색어를 입력해 주세요',
               border: OutlineInputBorder(
@@ -76,34 +76,40 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
               child: ListView.separated(
                 itemBuilder: (context, index) {
                   final result = results[index];
-                  return SizedBox(
-                    height: 100,
-                    width: 200,
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          child: Image.network(
-                            result.image,
-                            width: 56,
-                            height: 56,
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: 300,
-                              child: Text(
-                                result.title,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 100,
+                      width: 200,
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            child: Image.network(
+                              result.image,
+                              width: 65,
+                              height: 100,
+                              fit:  BoxFit.contain,
                             ),
-                            Text(result.author, overflow: TextOverflow.ellipsis),
-                            Text(result.pubdate, overflow: TextOverflow.ellipsis),
-                            Text(index.toString())
-                          ],
-                        ),
-                      ],
+                          ),
+                          SizedBox(width: 10),
+                          SizedBox(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 300,
+                                  child: Text(
+                                    result.title,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                Text(result.author, overflow: TextOverflow.ellipsis),
+                                Text(result.pubdate, overflow: TextOverflow.ellipsis),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
