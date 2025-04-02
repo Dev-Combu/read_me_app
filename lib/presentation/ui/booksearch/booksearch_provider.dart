@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:read_me_app/data/repository_impl/naver_repository_impl.dart';
-import 'package:read_me_app/data/source/naver_data_source.dart';
-import 'package:read_me_app/data/source/naver_data_source_impl.dart';
+import 'package:read_me_app/data/source/naver/naver_data_source.dart';
+import 'package:read_me_app/data/source/naver/naver_data_source_impl.dart';
 import 'package:read_me_app/domain/repository/naver_repository.dart';
 import 'package:read_me_app/domain/usecase/naver_usecase.dart';
 

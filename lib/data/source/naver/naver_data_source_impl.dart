@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:read_me_app/data/dto/naver/naver_dto.dart';
-import 'package:read_me_app/data/source/naver_data_source.dart';
+import 'package:read_me_app/data/source/naver/naver_data_source.dart';
 import 'package:dio/dio.dart';
 
 class NaverDataSourceImpl implements NaverDataSource{

@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'readmeapp-e8e61.firebasestorage.app',
     iosBundleId: 'com.example.readMeApp',
   );
+
 }
