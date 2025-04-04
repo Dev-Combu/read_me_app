@@ -2,15 +2,16 @@ import 'package:read_me_app/data/source/reading_book/reading_book_data_source.da
 import 'package:read_me_app/domain/entity/reading_book_entity.dart';
 import 'package:read_me_app/domain/repository/reading_book_repository.dart';
 
-class ReadingBookRepositoryImpl implements ReadingBookRepository{
-  
+class ReadingBookRepositoryImpl implements ReadingBookRepository {
   ReadingBookRepositoryImpl(this._readingBookDataSource);
   final ReadingBookDataSource _readingBookDataSource;
-  
+
   @override
-  Future<List<ReadingBookEntity>> createBook() {
-    // TODO: implement createBook
-    throw UnimplementedError();
+  Future<List<ReadingBookEntity>> createBook(
+      ReadingBookEntity readingBookEntity) async {
+    await _readingBookDataSource.createBook(readingBookEntity);
+
+    return [readingBookEntity];
   }
 
   @override
@@ -38,5 +39,4 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository{
     // TODO: implement updateBook
     throw UnimplementedError();
   }
-  
 }
