@@ -2,15 +2,31 @@ import 'package:logger/logger.dart';
 import 'package:read_me_app/data/dto/reading_book/reading_book_dto.dart';
 import 'package:read_me_app/data/source/reading_book/reading_book_data_source.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:read_me_app/domain/entity/reading_book_entity.dart';
 
 class ReadingBookDataSourceImpl implements ReadingBookDataSource{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Logger logger = Logger();
   
   @override
-  Future<List<ReadingBookDto>> createBook() {
-    // TODO: implement createBook
-    throw UnimplementedError();
+Future<List<ReadingBookEntity>> createBook(ReadingBookEntity readingBookEntity) async {
+    try {
+      final docRef = _firestore.collection('reading_book').doc();
+      await docRef.set({
+        'id': docRef.id,  // Firestore 문서 ID 저장
+        'image': readingBookEntity.image,
+        'author': readingBookEntity.author,
+        'title': readingBookEntity.title,
+        'detail': readingBookEntity.detail,
+        'date': readingBookEntity.date,  // ✅ 기존: '' → 수정: 실제 date 값 저장
+      });
+
+      logger.i("✅ Firestore 저장 완료: ${docRef.id}");
+      return [readingBookEntity];
+    } catch (e) {
+      logger.e("❌ Firestore 저장 실패: $e");
+      return [];
+    }
   }
   
   @override

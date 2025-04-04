@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_app/presentation/ui/bookcase/bookcase_page.dart';
+import 'package:read_me_app/presentation/ui/bookcase_write/bookcase_write_page.dart';
 import 'package:read_me_app/presentation/ui/booksearch/booksearch_page.dart';
 import 'package:read_me_app/presentation/ui/home/home_page.dart';
 import 'package:read_me_app/presentation/widgets/bottom_tab_bar/bottom_tab_bar.dart';
@@ -33,6 +34,18 @@ final router = GoRouter(
           builder: (context, state) => BooksearchPage(),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/write',
+      builder: (context, state) {
+        final args = state.extra as Map<String, dynamic>;
+        return BookcaseWritePage(
+          author: args['author'],
+          image: args['image'],
+          title: args['title'],
+          pubdate: args['pubdate'],
+        );
+      }
     ),
   ],
 );

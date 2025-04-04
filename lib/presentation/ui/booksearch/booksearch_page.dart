@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:read_me_app/presentation/ui/booksearch/booksearch_view_model.dart';
 
 class BooksearchPage extends ConsumerStatefulWidget {
@@ -69,7 +70,7 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
                 if (notification is ScrollUpdateNotification &&
                     notification.metrics.pixels >=
                         notification.metrics.maxScrollExtent) {
-                  bookSearch(textEditingController.text, start, append: true);  // 🔄 무한 스크롤 (데이터 추가)
+                  bookSearch(textEditingController.text, start, append: true);
                 }
                 return false;
               },
@@ -97,7 +98,7 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: 300,
+                                  width: 250,
                                   child: Text(
                                     result.title,
                                     overflow: TextOverflow.ellipsis,
@@ -108,6 +109,21 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
                               ],
                             ),
                           ),
+                          PopupMenuButton(itemBuilder: (context)=> <PopupMenuEntry>[
+                            PopupMenuItem(
+                              onTap: () {
+                                context.push('/write', extra: {
+                                  'title' : result.title,
+                                  'author': result.author,
+                                  'pubdate': result.pubdate,
+                                  'image': result.image,
+                                });
+
+                              },
+                              child: ListTile(
+                              leading: Icon(Icons.add),title: Text('add'),
+                              ))
+                          ])
                         ],
                       ),
                     ),

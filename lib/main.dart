@@ -6,13 +6,17 @@ import 'package:read_me_app/firebase_options.dart';
 import 'package:read_me_app/presentation/app/router.dart';
 
 void main() async {
+
+  //Dotenv 연동
   await dotenv.load(fileName: ".env");
-  
+
+  //Firebase 연동
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  //Riverpod 사용
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -20,7 +24,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

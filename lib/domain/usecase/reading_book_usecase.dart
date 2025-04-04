@@ -8,4 +8,8 @@ class ReadingBookUsecase {
   Future<List<ReadingBookEntity>?> readexecute() async {
     return await _readingBookRepository.readBook();
   }
+
+  Future<List<ReadingBookEntity>?> createBook(ReadingBookEntity book) async {
+    return await _readingBookRepository.createBook(book);
+  }
 }
