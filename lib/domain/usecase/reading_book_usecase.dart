@@ -5,8 +5,8 @@ class ReadingBookUsecase {
   ReadingBookUsecase(this._readingBookRepository);
   final ReadingBookRepository _readingBookRepository;
 
-  Future<List<ReadingBookEntity>?> readexecute() async {
-    return await _readingBookRepository.readBook();
+  Stream<List<ReadingBookEntity>?> readexecute() {
+    return _readingBookRepository.readBook();
   }
 
   Future<List<ReadingBookEntity>?> createBook(ReadingBookEntity book) async {

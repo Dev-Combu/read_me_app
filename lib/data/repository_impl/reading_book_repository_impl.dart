@@ -21,10 +21,10 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository {
   }
 
   @override
-  Future<List<ReadingBookEntity>> readBook() async {
-    final result = await _readingBookDataSource.readBook();
-    return result
-        .map((e) => ReadingBookEntity(
+  Stream<List<ReadingBookEntity>> readBook() {
+    final result = _readingBookDataSource.readBook();
+    return result.map((list){
+      return list.map((e) => ReadingBookEntity(
               author: e.author,
               title: e.title,
               image: e.image,
@@ -32,6 +32,8 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository {
               date: e.date,
             ))
         .toList();
+        
+  });
   }
 
   @override

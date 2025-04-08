@@ -26,12 +26,34 @@ class _BookcasePageState extends ConsumerState<BookcasePage> {
               width: 200,
               child: Row(
                 children: [
-                  Text(result.author),
-                  Text(result.title),
-                  Text(result.image),
-                  Text(result.detail),
-                  Text(result.date),
-                  ],
+                  ClipRRect(
+                    child: Image.network(
+                      result.image,
+                      width: 65,
+                      height: 100,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 250,
+                          child: Text(
+                            result.title,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Text(
+                          result.author,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           );

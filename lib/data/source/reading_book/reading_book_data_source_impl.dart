@@ -4,21 +4,22 @@ import 'package:read_me_app/data/source/reading_book/reading_book_data_source.da
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:read_me_app/domain/entity/reading_book_entity.dart';
 
-class ReadingBookDataSourceImpl implements ReadingBookDataSource{
+class ReadingBookDataSourceImpl implements ReadingBookDataSource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Logger logger = Logger();
-  
+
   @override
-Future<List<ReadingBookEntity>> createBook(ReadingBookEntity readingBookEntity) async {
+  Future<List<ReadingBookEntity>> createBook(
+      ReadingBookEntity readingBookEntity) async {
     try {
       final docRef = _firestore.collection('reading_book').doc();
       await docRef.set({
-        'id': docRef.id,  // Firestore 문서 ID 저장
+        'id': docRef.id, // Firestore 문서 ID 저장
         'image': readingBookEntity.image,
         'author': readingBookEntity.author,
         'title': readingBookEntity.title,
         'detail': readingBookEntity.detail,
-        'date': readingBookEntity.date,  // ✅ 기존: '' → 수정: 실제 date 값 저장
+        'date': readingBookEntity.date, // ✅ 기존: '' → 수정: 실제 date 값 저장
       });
 
       logger.i("✅ Firestore 저장 완료: ${docRef.id}");
@@ -28,42 +29,35 @@ Future<List<ReadingBookEntity>> createBook(ReadingBookEntity readingBookEntity) 
       return [];
     }
   }
-  
+
   @override
   Future<List<ReadingBookDto>> delteBook() {
     // TODO: implement delteBook
     throw UnimplementedError();
   }
-  
-  @override
-  Future<List<ReadingBookDto>> readBook() async{
-    try {
-      final collectionRef = _firestore.collection('reading_book');
-      final result = await collectionRef.get();
 
-      final docs = result.docs;
-      return docs.map((doc) {
+  @override
+  Stream<List<ReadingBookDto>> readBook() {
+    final collectionRef = _firestore.collection('reading_book');
+    final result = collectionRef.snapshots();
+
+    final stream = result.map((snapshot) {
+      final docs = snapshot.docs.map((doc) {
         final map = doc.data();
-        doc.id;
         final newMap = {
           'id': doc.id,
           ...map,
         };
         return ReadingBookDto.fromJson(newMap);
       }).toList();
-    } catch (e) {
-      logger.i('$e');
-      return [];
-    }
+      return docs;
+    });
+    return stream;
   }
-  
+
   @override
   Future<List<ReadingBookDto>> updateBook() {
     // TODO: implement updateBook
     throw UnimplementedError();
   }
-
-
-
-
 }
