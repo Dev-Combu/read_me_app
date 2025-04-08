@@ -11,8 +11,15 @@ class BookcaseViewModel extends Notifier<List<ReadingBookEntity>?>{
     return [];
   }
 
-  Future<void> fetchBookCase() async{
-    state = await ref.read(fetchReadingBookUsecaseProvider).readexecute();
+  void fetchBookCase() {
+    final stream = ref.read(fetchReadingBookUsecaseProvider).readexecute();
+
+    final streamSubscription = stream.listen((e) {
+      state = e;
+    });
+    ref.onDispose(() {
+      streamSubscription.cancel();
+    });
   }
 }
 
