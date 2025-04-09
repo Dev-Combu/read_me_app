@@ -21,7 +21,8 @@ class NaverRepositoryImpl implements NaverRepository{
             publisher: e.publisher,
             pubdate: e.pubdate,
             isbn: e.isbn,
-            description: e.description)
+            description: e.description,
+            )
       ).toList();
   }
 }

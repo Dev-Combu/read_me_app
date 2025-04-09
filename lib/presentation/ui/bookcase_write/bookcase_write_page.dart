@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:read_me_app/data/dto/reading_book/reading_book_dto.dart';
 import 'package:read_me_app/domain/entity/reading_book_entity.dart';
 import 'package:read_me_app/presentation/ui/bookcase_write/bookcase_write_view_model.dart';
 
@@ -23,14 +22,16 @@ class BookcaseWritePage extends ConsumerStatefulWidget {
 }
 
 class _BookcaseWritePageState extends ConsumerState<BookcaseWritePage> {
-  final TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingControllerTitle = TextEditingController();
+  final TextEditingController _textEditingControllerDetail = TextEditingController();
 
   Future<void> _saveBook() async {
     final book = ReadingBookEntity(
       image: widget.image,
       author: widget.author,
-      title: widget.title,
-      detail: _textEditingController.text, // 사용자가 입력한 데이터 저장
+      bookTitle: widget.title,
+      title: _textEditingControllerTitle.text,
+      detail: _textEditingControllerDetail.text, // 사용자가 입력한 데이터 저장
       date: DateTime.now().toIso8601String(),
     );
 
@@ -48,6 +49,22 @@ class _BookcaseWritePageState extends ConsumerState<BookcaseWritePage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(border: Border.all(width: 1)),
+              child: TextField(
+                controller: _textEditingControllerTitle,
+                decoration: InputDecoration(
+                  border: InputBorder.none, // 기본 테두리 제거
+                  hintText: '데이터를 입력하세요', // 힌트 텍스트 추가
+                  contentPadding: EdgeInsets.all(10), // 패딩 추가
+                ),
+                maxLines: null, // 다중 행 입력 가능
+                expands: true, // Container 전체를 차지하도록 설정
+              ),
+            ),
+            SizedBox(height: 10,),
             Container(
               width: double.infinity,
               height: 100,
@@ -90,7 +107,7 @@ class _BookcaseWritePageState extends ConsumerState<BookcaseWritePage> {
               height: 400,
               decoration: BoxDecoration(border: Border.all(width: 1)),
               child: TextField(
-                controller: _textEditingController,
+                controller: _textEditingControllerDetail,
                 decoration: InputDecoration(
                   border: InputBorder.none, // 기본 테두리 제거
                   hintText: '데이터를 입력하세요', // 힌트 텍스트 추가

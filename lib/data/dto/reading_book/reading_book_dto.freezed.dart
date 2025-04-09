@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ReadingBookDto {
   String get author;
+  String get bookTitle;
   String get title;
   String get image;
   String get detail;
@@ -38,6 +39,8 @@ mixin _$ReadingBookDto {
         (other.runtimeType == runtimeType &&
             other is ReadingBookDto &&
             (identical(other.author, author) || other.author == author) &&
+            (identical(other.bookTitle, bookTitle) ||
+                other.bookTitle == bookTitle) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.detail, detail) || other.detail == detail) &&
@@ -47,11 +50,11 @@ mixin _$ReadingBookDto {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, author, title, image, detail, date);
+      Object.hash(runtimeType, author, bookTitle, title, image, detail, date);
 
   @override
   String toString() {
-    return 'ReadingBookDto(author: $author, title: $title, image: $image, detail: $detail, date: $date)';
+    return 'ReadingBookDto(author: $author, bookTitle: $bookTitle, title: $title, image: $image, detail: $detail, date: $date)';
   }
 }
 
@@ -62,7 +65,12 @@ abstract mixin class $ReadingBookDtoCopyWith<$Res> {
       _$ReadingBookDtoCopyWithImpl;
   @useResult
   $Res call(
-      {String author, String title, String image, String detail, String date});
+      {String author,
+      String bookTitle,
+      String title,
+      String image,
+      String detail,
+      String date});
 }
 
 /// @nodoc
@@ -79,6 +87,7 @@ class _$ReadingBookDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? author = null,
+    Object? bookTitle = null,
     Object? title = null,
     Object? image = null,
     Object? detail = null,
@@ -88,6 +97,10 @@ class _$ReadingBookDtoCopyWithImpl<$Res>
       author: null == author
           ? _self.author
           : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookTitle: null == bookTitle
+          ? _self.bookTitle
+          : bookTitle // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _self.title
@@ -114,6 +127,7 @@ class _$ReadingBookDtoCopyWithImpl<$Res>
 class _ReadingBookDto implements ReadingBookDto {
   _ReadingBookDto(
       {required this.author,
+      required this.bookTitle,
       required this.title,
       required this.image,
       required this.detail,
@@ -123,6 +137,8 @@ class _ReadingBookDto implements ReadingBookDto {
 
   @override
   final String author;
+  @override
+  final String bookTitle;
   @override
   final String title;
   @override
@@ -153,6 +169,8 @@ class _ReadingBookDto implements ReadingBookDto {
         (other.runtimeType == runtimeType &&
             other is _ReadingBookDto &&
             (identical(other.author, author) || other.author == author) &&
+            (identical(other.bookTitle, bookTitle) ||
+                other.bookTitle == bookTitle) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.detail, detail) || other.detail == detail) &&
@@ -162,11 +180,11 @@ class _ReadingBookDto implements ReadingBookDto {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, author, title, image, detail, date);
+      Object.hash(runtimeType, author, bookTitle, title, image, detail, date);
 
   @override
   String toString() {
-    return 'ReadingBookDto(author: $author, title: $title, image: $image, detail: $detail, date: $date)';
+    return 'ReadingBookDto(author: $author, bookTitle: $bookTitle, title: $title, image: $image, detail: $detail, date: $date)';
   }
 }
 
@@ -179,7 +197,12 @@ abstract mixin class _$ReadingBookDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String author, String title, String image, String detail, String date});
+      {String author,
+      String bookTitle,
+      String title,
+      String image,
+      String detail,
+      String date});
 }
 
 /// @nodoc
@@ -196,6 +219,7 @@ class __$ReadingBookDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? author = null,
+    Object? bookTitle = null,
     Object? title = null,
     Object? image = null,
     Object? detail = null,
@@ -205,6 +229,10 @@ class __$ReadingBookDtoCopyWithImpl<$Res>
       author: null == author
           ? _self.author
           : author // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookTitle: null == bookTitle
+          ? _self.bookTitle
+          : bookTitle // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _self.title

@@ -14,7 +14,7 @@ class ReadingBookDataSourceImpl implements ReadingBookDataSource {
     try {
       final docRef = _firestore.collection('reading_book').doc();
       await docRef.set({
-        'id': docRef.id, // Firestore 문서 ID 저장
+        'bookTitle': readingBookEntity.bookTitle, // Firestore 문서 ID 저장
         'image': readingBookEntity.image,
         'author': readingBookEntity.author,
         'title': readingBookEntity.title,
