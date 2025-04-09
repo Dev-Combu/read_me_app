@@ -15,6 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ReadingBookDto {
+  String get id;
   String get author;
   String get bookTitle;
   String get title;
@@ -38,6 +39,7 @@ mixin _$ReadingBookDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ReadingBookDto &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.bookTitle, bookTitle) ||
                 other.bookTitle == bookTitle) &&
@@ -49,12 +51,12 @@ mixin _$ReadingBookDto {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, author, bookTitle, title, image, detail, date);
+  int get hashCode => Object.hash(
+      runtimeType, id, author, bookTitle, title, image, detail, date);
 
   @override
   String toString() {
-    return 'ReadingBookDto(author: $author, bookTitle: $bookTitle, title: $title, image: $image, detail: $detail, date: $date)';
+    return 'ReadingBookDto(id: $id, author: $author, bookTitle: $bookTitle, title: $title, image: $image, detail: $detail, date: $date)';
   }
 }
 
@@ -65,7 +67,8 @@ abstract mixin class $ReadingBookDtoCopyWith<$Res> {
       _$ReadingBookDtoCopyWithImpl;
   @useResult
   $Res call(
-      {String author,
+      {String id,
+      String author,
       String bookTitle,
       String title,
       String image,
@@ -86,6 +89,7 @@ class _$ReadingBookDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? author = null,
     Object? bookTitle = null,
     Object? title = null,
@@ -94,6 +98,10 @@ class _$ReadingBookDtoCopyWithImpl<$Res>
     Object? date = null,
   }) {
     return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       author: null == author
           ? _self.author
           : author // ignore: cast_nullable_to_non_nullable
@@ -126,7 +134,8 @@ class _$ReadingBookDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _ReadingBookDto implements ReadingBookDto {
   _ReadingBookDto(
-      {required this.author,
+      {required this.id,
+      required this.author,
       required this.bookTitle,
       required this.title,
       required this.image,
@@ -135,6 +144,8 @@ class _ReadingBookDto implements ReadingBookDto {
   factory _ReadingBookDto.fromJson(Map<String, dynamic> json) =>
       _$ReadingBookDtoFromJson(json);
 
+  @override
+  final String id;
   @override
   final String author;
   @override
@@ -168,6 +179,7 @@ class _ReadingBookDto implements ReadingBookDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ReadingBookDto &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.bookTitle, bookTitle) ||
                 other.bookTitle == bookTitle) &&
@@ -179,12 +191,12 @@ class _ReadingBookDto implements ReadingBookDto {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, author, bookTitle, title, image, detail, date);
+  int get hashCode => Object.hash(
+      runtimeType, id, author, bookTitle, title, image, detail, date);
 
   @override
   String toString() {
-    return 'ReadingBookDto(author: $author, bookTitle: $bookTitle, title: $title, image: $image, detail: $detail, date: $date)';
+    return 'ReadingBookDto(id: $id, author: $author, bookTitle: $bookTitle, title: $title, image: $image, detail: $detail, date: $date)';
   }
 }
 
@@ -197,7 +209,8 @@ abstract mixin class _$ReadingBookDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String author,
+      {String id,
+      String author,
       String bookTitle,
       String title,
       String image,
@@ -218,6 +231,7 @@ class __$ReadingBookDtoCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? id = null,
     Object? author = null,
     Object? bookTitle = null,
     Object? title = null,
@@ -226,6 +240,10 @@ class __$ReadingBookDtoCopyWithImpl<$Res>
     Object? date = null,
   }) {
     return _then(_ReadingBookDto(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       author: null == author
           ? _self.author
           : author // ignore: cast_nullable_to_non_nullable

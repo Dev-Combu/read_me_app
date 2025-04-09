@@ -1,4 +1,5 @@
 class ReadingBookEntity {
+  final String id;
   final String author;
   final String bookTitle;
   final String title;
@@ -7,6 +8,7 @@ class ReadingBookEntity {
   final String date;
 
   ReadingBookEntity({
+    required this.id,
     required this.author,
     required this.bookTitle,
     required this.title,

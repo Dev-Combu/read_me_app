@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 import 'package:read_me_app/presentation/ui/bookcase/bookcase_view_model.dart';
 
 class BookcasePage extends ConsumerStatefulWidget {
@@ -21,7 +24,17 @@ class _BookcasePageState extends ConsumerState<BookcasePage> {
           final result = bookcaseResult[index];
           return GestureDetector(
             onTap: () {
-              context.go('/write');
+              context.push('/write', extra: {
+                'id' : result.id,
+                'booktitle': result.bookTitle,
+                'author': result.author,
+                'image': result.image,
+                'title': result.title,
+                'detail' : result.detail,
+                'date' : result.date,
+                'isWriting' : false,
+              });
+              Logger().i(result.id);
             },
             child: Padding(
               padding: const EdgeInsets.all(16),

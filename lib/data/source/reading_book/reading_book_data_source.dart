@@ -5,7 +5,7 @@ abstract interface class ReadingBookDataSource {
 
  Future<List<ReadingBookEntity>> createBook(ReadingBookEntity readingBookEntity);
  Stream<List<ReadingBookDto>> readBook();
- Future<List<ReadingBookDto>> updateBook();
- Future<List<ReadingBookDto>> delteBook();
+ Future<List<ReadingBookEntity>> updateBook(ReadingBookEntity readingBookEntity);
+ Future<List<ReadingBookEntity>> deleteBook(String id);
 
 }

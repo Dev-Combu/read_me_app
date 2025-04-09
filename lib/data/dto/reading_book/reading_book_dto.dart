@@ -6,6 +6,7 @@ part 'reading_book_dto.g.dart';
 @freezed
 abstract class ReadingBookDto with _$ReadingBookDto {
   factory ReadingBookDto({
+    required String id,
     required String author,
     required String bookTitle,
     required String title,

@@ -15,9 +15,10 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository {
   }
 
   @override
-  Future<List<ReadingBookEntity>> delteBook() {
-    // TODO: implement delteBook
-    throw UnimplementedError();
+  Future<List<ReadingBookEntity>> deleteBook(String id) async {
+    await _readingBookDataSource.deleteBook(id);
+
+    return [];
   }
 
   @override
@@ -25,6 +26,7 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository {
     final result = _readingBookDataSource.readBook();
     return result.map((list){
       return list.map((e) => ReadingBookEntity(
+              id: e.id,
               author: e.author,
               bookTitle: e.bookTitle,
               title: e.title,
@@ -38,8 +40,10 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository {
   }
 
   @override
-  Future<List<ReadingBookEntity>> updateBook() {
-    // TODO: implement updateBook
-    throw UnimplementedError();
+  Future<List<ReadingBookEntity>> updateBook(
+      ReadingBookEntity readingBookEntity) async {
+    await _readingBookDataSource.updateBook(readingBookEntity);
+
+    return [readingBookEntity];
   }
 }

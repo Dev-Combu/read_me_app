@@ -18,10 +18,5 @@ void main() {
     ReadingBookDataSourceImpl readingBookDataSourceImpl = ReadingBookDataSourceImpl();
     final search =  readingBookDataSourceImpl.readBook();
     expect(search.isEmpty, false);
-    
-    for (var searchs in search) {
-      Logger logger = Logger();
-      logger.i(searchs.author);
-    }
   });
 }
