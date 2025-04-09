@@ -1,5 +1,6 @@
 class ReadingBookEntity {
   final String author;
+  final String bookTitle;
   final String title;
   final String image;
   final String detail;
@@ -7,6 +8,7 @@ class ReadingBookEntity {
 
   ReadingBookEntity({
     required this.author,
+    required this.bookTitle,
     required this.title,
     required this.image,
     required this.detail,

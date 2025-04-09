@@ -14,9 +14,9 @@ void main() {
   );
   });
 
-  test('reading_book_test', () async {
+  test('reading_book_test', ()  {
     ReadingBookDataSourceImpl readingBookDataSourceImpl = ReadingBookDataSourceImpl();
-    final search = await readingBookDataSourceImpl.readBook();
+    final search =  readingBookDataSourceImpl.readBook();
     expect(search.isEmpty, false);
     
     for (var searchs in search) {

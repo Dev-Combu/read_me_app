@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:read_me_app/firebase_options.dart';
 import 'package:read_me_app/presentation/app/router.dart';
+import 'package:read_me_app/presentation/theme/theme.dart';
 
 void main() async {
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Record Reading',
       routerConfig: router,
+      theme: AppTheme.lightTheme,
     );
   }
 }

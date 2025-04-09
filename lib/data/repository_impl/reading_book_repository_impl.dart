@@ -26,6 +26,7 @@ class ReadingBookRepositoryImpl implements ReadingBookRepository {
     return result.map((list){
       return list.map((e) => ReadingBookEntity(
               author: e.author,
+              bookTitle: e.bookTitle,
               title: e.title,
               image: e.image,
               detail: e.detail,
