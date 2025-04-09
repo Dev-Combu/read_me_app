@@ -40,10 +40,14 @@ final router = GoRouter(
       builder: (context, state) {
         final args = state.extra as Map<String, dynamic>;
         return BookcaseWritePage(
+          id: args['id'],
           author: args['author'],
           image: args['image'],
+          booktitle: args['booktitle'],
           title: args['title'],
-          pubdate: args['pubdate'],
+          detail: args['detail'],
+          date: args['date'],
+          isWriting: args['isWriting'],
         );
       }
     ),

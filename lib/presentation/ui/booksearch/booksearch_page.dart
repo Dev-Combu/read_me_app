@@ -113,10 +113,10 @@ class _BooksearchPageState extends ConsumerState<BooksearchPage> {
                             PopupMenuItem(
                               onTap: () {
                                 context.push('/write', extra: {
-                                  'title' : result.title,
+                                  'booktitle' : result.title,
                                   'author': result.author,
-                                  'pubdate': result.pubdate,
                                   'image': result.image,
+                                  'isWriting' : true
                                 });
 
                               },

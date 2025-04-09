@@ -31,12 +31,6 @@ class ReadingBookDataSourceImpl implements ReadingBookDataSource {
   }
 
   @override
-  Future<List<ReadingBookDto>> delteBook() {
-    // TODO: implement delteBook
-    throw UnimplementedError();
-  }
-
-  @override
   Stream<List<ReadingBookDto>> readBook() {
     final collectionRef = _firestore.collection('reading_book');
     final result = collectionRef.snapshots();
@@ -56,8 +50,37 @@ class ReadingBookDataSourceImpl implements ReadingBookDataSource {
   }
 
   @override
-  Future<List<ReadingBookDto>> updateBook() {
-    // TODO: implement updateBook
-    throw UnimplementedError();
+  Future<List<ReadingBookEntity>> updateBook(
+      ReadingBookEntity readingBookEntity) async {
+    try {
+      final docRef =
+          _firestore.collection('reading_book').doc(readingBookEntity.id);
+      await docRef.update({
+        'bookTitle': readingBookEntity.bookTitle, // Firestore 문서 ID 저장
+        'image': readingBookEntity.image,
+        'author': readingBookEntity.author,
+        'title': readingBookEntity.title,
+        'detail': readingBookEntity.detail,
+        'date': readingBookEntity.date, // ✅ 기존: '' → 수정: 실제 date 값 저장
+      });
+
+      logger.i("✅ Firestore 저장 완료: ${docRef.id}");
+      return [readingBookEntity];
+    } catch (e) {
+      logger.e("❌ Firestore 저장 실패: $e");
+      return [];
+    }
+  }
+
+  @override
+  Future<List<ReadingBookEntity>> deleteBook(String id) async {
+    try {
+      await _firestore.collection('reading_book').doc(id).delete();
+      logger.i("✅ 삭제 완료: $id");
+      return [];
+    } catch (e) {
+      logger.e("❌ 삭제 실패: $e");
+      return [];
+    }
   }
 }
