@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 import 'package:read_me_app/domain/entity/reading_book_entity.dart';
 import 'package:read_me_app/presentation/ui/bookcase_write/bookcase_write_view_model.dart';
@@ -66,24 +67,15 @@ class _BookcaseWritePageState extends ConsumerState<BookcaseWritePage> {
     setState(() {
       isEditing = false;
     });
-
-    Logger().i(widget.id);
   }
-  // Future<void> _deleteBook() async {
-  //   final book = ReadingBookEntity(
-  //     image: widget.image,
-  //     author: widget.author,
-  //     bookTitle: widget.booktitle,
-  //     title: _textEditingControllerTitle.text,
-  //     detail: _textEditingControllerDetail.text, // 사용자가 입력한 데이터 저장
-  //     date: DateTime.now().toIso8601String(),
-  //   );
 
-  //   await ref.read(bookcaseWriteViewModelProvider.notifier).createBook(book);
-  // }
+  Future<void> _deleteBook(String id) async {
+    await ref.read(bookcaseWriteViewModelProvider.notifier).deleteBook(id);
+  }
 
   bool isEditing = false;
   late bool isWriting;
+
   @override
   void initState() {
     super.initState();
@@ -181,6 +173,12 @@ class _BookcaseWritePageState extends ConsumerState<BookcaseWritePage> {
                             onPressed: _editBook,
                             child: Text('수정 저장하기'),
                           ),
+                          TextButton(
+                            onPressed: () {
+                              deleteDialog(context);
+                            },
+                            child: Text('삭제하기'),
+                          ),
                         ],
                       )
                     : Row(
@@ -202,5 +200,35 @@ class _BookcaseWritePageState extends ConsumerState<BookcaseWritePage> {
         ),
       ),
     );
+  }
+
+
+
+  Future<dynamic> deleteDialog(BuildContext context) {
+    return showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('삭제 확인'),
+                                content: Text('정말 삭제하시겠습니까?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(), // 취소
+                                    child: Text('취소'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      Navigator.of(context).pop(); // 다이얼로그 닫기
+                                      await _deleteBook(
+                                          widget.id!); // 실제 삭제 로직
+                                      if (context.mounted) {
+                                        context.pop(); // 이전 화면으로 돌아가기
+                                      }
+                                    },
+                                    child: Text('삭제'),
+                                  ),
+                                ],
+                              ),
+                            );
   }
 }

@@ -16,4 +16,8 @@ class ReadingBookUsecase {
   Future<List<ReadingBookEntity>?> updateBook(ReadingBookEntity book) async {
     return await _readingBookRepository.updateBook(book);
   }
+
+  Future<List<ReadingBookEntity>?> deleteBook(String id) async {
+    return await _readingBookRepository.deleteBook(id);
+  }
 }

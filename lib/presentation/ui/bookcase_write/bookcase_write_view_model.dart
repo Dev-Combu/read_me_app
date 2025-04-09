@@ -18,6 +18,11 @@ class BookcaseViewModel extends Notifier<List<ReadingBookEntity>?> {
     // 책 생성 로직
     await ref.read(fetchReadingBookUsecaseProvider).updateBook(book);
   }
+
+  Future<void> deleteBook(String id) async {
+    // 책 생성 로직
+    await ref.read(fetchReadingBookUsecaseProvider).deleteBook(id);
+  }
 }
 
 // NotifierProvider 생성
